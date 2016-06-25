@@ -16,7 +16,7 @@ ROOT_DIR = environ.Path(__file__) - 3  # (carros/config/settings/common.py - 3 =
 APPS_DIR = ROOT_DIR.path('carros')
 
 env = environ.Env()
-env.read_env() # or env.read_env('.myenv')
+#env.read_env() # or env.read_env('.myenv')
 
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -100,11 +100,23 @@ MANAGERS = ADMINS
 # DATABASE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
+# DATABASES = {
+#     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
+#     'default': env.db('DATABASE_URL', default='postgres:///carros'),
+# }
+# DATABASES['default']['ATOMIC_REQUESTS'] = True
+
+#export DATABASE_URL="postgres://carrosuser:patacore@carrosdb.cne1xp06dvur.us-west-2.rds.amazonaws.com:5432/carrosdb"
 DATABASES = {
-    # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db('DATABASE_URL', default='postgres:///carros'),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'carros',
+        'USER': 'carrosuser',
+        'PASSWORD': 'patacore',
+        'HOST': 'carrosdb.cne1xp06dvur.us-west-2.rds.amazonaws.com',
+        'PORT': '5432',
+    }
 }
-DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # GENERAL CONFIGURATION
