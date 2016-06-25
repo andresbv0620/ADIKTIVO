@@ -16,6 +16,7 @@ ROOT_DIR = environ.Path(__file__) - 3  # (carros/config/settings/common.py - 3 =
 APPS_DIR = ROOT_DIR.path('carros')
 
 env = environ.Env()
+env.read_env() # or env.read_env('.myenv')
 
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -200,7 +201,7 @@ MEDIA_URL = '/media/'
 ROOT_URLCONF = 'config.urls'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
-WSGI_APPLICATION = 'config.wsgi.application'
+#WSGI_APPLICATION = 'config.wsgi.application'
 
 # AUTHENTICATION CONFIGURATION
 # ------------------------------------------------------------------------------
