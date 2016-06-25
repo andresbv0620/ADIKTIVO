@@ -1,0 +1,20 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<form method="POST" action="{% url 'alertas:create' %}">
+				{%csrf_token%}
+				{{saludo}}
+				{{ form|crispy }}
+				<div class="control-group">
+					<div class="controls">
+						<input type="submit" value="CREAR ALERTA" class="btn btn-primary"></input>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
