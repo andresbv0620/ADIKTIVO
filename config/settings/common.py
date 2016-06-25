@@ -110,7 +110,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'carros',
+        'NAME': 'carrosdb',
         'USER': 'carrosuser',
         'PASSWORD': 'patacore',
         'HOST': 'carrosdb.cne1xp06dvur.us-west-2.rds.amazonaws.com',
