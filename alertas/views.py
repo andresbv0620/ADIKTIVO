@@ -23,7 +23,7 @@ class AlertView(LoginRequiredMixin, View):
 
 	def get(self, request, *args, **kwargs):
 		form=self.form_class()
-		saludo="Encuentra tu carro"
+		saludo="Cuentanos que carro estas buscando"
 		context={
 		"saludo": saludo,
 		"form": form,

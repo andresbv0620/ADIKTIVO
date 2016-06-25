@@ -37,7 +37,7 @@ class AlertForm(forms.ModelForm):
 	def clean_price_max(self):
 		price_min=self.cleaned_data.get('price_min')
 		price_max=self.cleaned_data.get('price_max')
-		if int(price_min)>=int(price_max):
+		if int(price_min)>int(price_max):
 			price_max=price_min
 			raise forms.ValidationError("Este valor debe ser mayor o igual que el anterior")
 		return price_max
@@ -45,7 +45,7 @@ class AlertForm(forms.ModelForm):
 	def clean_year_max(self):
 		year_min=self.cleaned_data.get('year_min')
 		year_max=self.cleaned_data.get('year_max')
-		if int(year_min)>=int(year_max):
+		if int(year_min)>int(year_max):
 			year_max=year_min
 			raise forms.ValidationError("Este valor debe ser mayor o igual que el anterior")
 		return year_max

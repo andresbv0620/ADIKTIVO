@@ -9,10 +9,11 @@ from carros.users.models import User
 # Create your models here.
 
 class Alert(models.Model):
-	val = None
+	val = "-1"
+	default_year = "0"
 
 	CHOICES_YEAR_DESDE = (
-		(val, 'Desde'),
+		(default_year, 'Desde'),
 		("2017",'2017'),
 		("2016",'2016'),
 		("2015",'2015'),
@@ -133,7 +134,7 @@ class Alert(models.Model):
 		("1900",'1900'),
 	)
 	CHOICES_YEAR_HASTA = (
-		(val, 'Hasta'),
+		(default_year, 'Hasta'),
 		("2017",'2017'),
 		("2016",'2016'),
 		("2015",'2015'),
@@ -320,8 +321,8 @@ class Alert(models.Model):
 	main_category = models.CharField(max_length=10)
 	brand = models.CharField(max_length=10, blank = True, null = True)
 	model = models.CharField(max_length=10, blank = True, null = True)
-	year_min = models.CharField(max_length=4, choices=CHOICES_YEAR_DESDE, default=val, blank = True, null = True)
-	year_max = models.CharField(max_length=4, choices=CHOICES_YEAR_HASTA, default=val, blank = True, null = True)
+	year_min = models.CharField(max_length=4, choices=CHOICES_YEAR_DESDE, default=default_year, blank = True, null = True)
+	year_max = models.CharField(max_length=4, choices=CHOICES_YEAR_HASTA, default=default_year, blank = True, null = True)
 	price_min = models.CharField(max_length=10, choices=CHOICES_PRICE_DESDE, default=val, blank = True, null = True)
 	price_max = models.CharField(max_length=10, choices=CHOICES_PRICE_HASTA, default=val, blank = True, null = True)
 	location = models.CharField(max_length=30, blank = True, null = True)

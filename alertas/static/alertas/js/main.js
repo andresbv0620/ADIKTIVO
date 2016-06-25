@@ -1,9 +1,11 @@
 $(document).ready(function() {
 	$('#div_id_brand').hide();
 	$('#div_id_model').hide();
+	$('#id_main_category').append('<option value="MCO1744" selected>Selecciona una categoria</option>');
+	$('#div_id_main_category').hide();
 
 	    // AJAX GET CATEGORY
-        $.ajax({
+        /*$.ajax({
             type: "GET",
             url: "https://api.mercadolibre.com/categories/MCO1743",
             sync: false,
@@ -12,23 +14,24 @@ $(document).ready(function() {
             success: function(data) {
             	console.log(data[2]);
             	main_category=data[2]["children_categories"];
-            	$('#id_main_category').append('<option value="MCO1743">Selecciona una categoria</option>');
+            	$('#id_main_category').append('<option value="MCO1744" selected>Selecciona una categoria</option>');
 	            for(i = 0; i < main_category.length; i++){
 	                $('#id_main_category').append('<option value="'+main_category[i]["id"]+'">'+main_category[i]["name"]+'</option>');
 	            }
 	            
         	}
-        });
+        });*/
 
 
 
 
     // AJAX GET BRANDS
-    $('#id_main_category').change(function(){
+    //$('#id_main_category').change(function(){
 
 
-    	category=$('select[id=id_main_category]').val();
-    	
+    	//category=$('select[id=id_main_category]').val();=
+    	$('#div_id_year_min').append('<img id="loadingimg" src="http://d13yacurqjgara.cloudfront.net/users/34535/screenshots/631316/loader_gif.gif" width="150px">');
+    	category="MCO1744";
         $.ajax({
             type: "GET",
             url: "https://api.mercadolibre.com/categories/"+category+"",
@@ -36,21 +39,23 @@ $(document).ready(function() {
             contentType: "application/json",
             dataType: "jsonp",
             success: function(data) {
+            	$('#loadingimg').remove();
             	$('#div_id_main_category').hide();
 		    	$('#div_id_brand').show();
             	console.log(data[2]);
             	marcas=data[2]["children_categories"];
-            	$('#id_brand').append('<option value="">Todos las marcas</option>');
+            	$('#id_brand').append('<option value="ALL" selected>Todas las marcas</option>');
 	            for(i = 0; i < marcas.length; i++){
 	                $('#id_brand').append('<option value="'+marcas[i]["id"]+'">'+marcas[i]["name"]+'</option>');
 	            }
         	}
         });
 
-    });
+    //});
 
     // AJAX GET MODEL
     $('#id_brand').change(function(){
+    	$('#div_id_brand').append('<img id="loadingimg" src="http://d13yacurqjgara.cloudfront.net/users/34535/screenshots/631316/loader_gif.gif" width="150px">');
     	brand=$('select[id=id_brand]').val();
 
         $.ajax({
@@ -60,6 +65,7 @@ $(document).ready(function() {
             contentType: "application/json",
             dataType: "jsonp",
             success: function(data) {
+            	$('#loadingimg').remove();
             	$('#div_id_brand').hide();
     			$('#div_id_model').show();
             	console.log(data[2]);
