@@ -46,7 +46,7 @@ class AlertView(LoginRequiredMixin, View):
 				price_max=instance.price_max,
 				mileage=instance.mileage
 				)
-			saludo="Alerta Creada exitosamente, crea otra"
+			saludo="Alerta Creada exitosamente, te avisaremos cuando publiquen carros como el que estas buscando"
 			context={
 			"saludo": saludo,
 			"form": self.form_class(),
